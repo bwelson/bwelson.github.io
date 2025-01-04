@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate - God's Will Foundation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #444;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .payment-methods img {
+      height: 40px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Make a Donation</h1>
+    <form id="donationForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Donation Amount (GHS)</label>
+        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+      </div>
+
+      <div class="form-group">
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="" disabled selected>Select a payment method</option>
+          <option value="mtn_momo">MTN MoMo</option>
+          <option value="vodafone_cash">Vodafone Cash</option>
+          <option value="credit_card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </div>
+
+      <!-- Mobile Payment Fields -->
+      <div class="form-group" id="mobilePaymentField" style="display: none;">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number">
+      </div>
+
+      <!-- Credit Card Fields -->
+      <div id="creditCardFields" style="display: none;">
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" name="cardNumber" placeholder="Card number">
+        </div>
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date</label>
+          <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" placeholder="CVV">
+        </div>
+      </div>
+
+      <button type="submit">Donate</button>
+    </form>
+  </div>
+
+  <script>
+    const paymentMethodSelect = document.getElementById('paymentMethod');
+    const mobilePaymentField = document.getElementById('mobilePaymentField');
+    const creditCardFields = document.getElementById('creditCardFields');
+
+    paymentMethodSelect.addEventListener('change', function() {
+      const selectedMethod = this.value;
+
+      // Show/hide specific fields based on the payment method selected
+      if (selectedMethod === 'mtn_momo' || selectedMethod === 'vodafone_cash') {
+        mobilePaymentField.style.display = 'block';
+        creditCardFields.style.display = 'none';
+      } else if (selectedMethod === 'credit_card') {
+        creditCardFields.style.display = 'block';
+        mobilePaymentField.style.display = 'none';
+      } else {
+        mobilePaymentField.style.display = 'none';
+        creditCardFields.style.display = 'none';
+      }
+    });
+
+    document.getElementById('donationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+      const paymentMethod = formData.get('paymentMethod');
+
+      // Here, you can implement the logic to send the data to a payment gateway
+      alert(`Donation of GHS ${formData.get('amount')} received via ${paymentMethod}`);
+    });
+  </script>
+</body>
+</html>
