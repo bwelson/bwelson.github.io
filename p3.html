@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /> <!-- Sets character encoding to UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Ensures responsive viewport settings -->
+  <title>Bentum Welson | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> <!-- Imports Font Awesome icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" /> <!-- Loads Google Fonts -->
+  
+  <style>
+    * {
+      margin: 0; /* Removes default margin */
+      padding: 0; /* Removes default padding */
+      box-sizing: border-box; /* Includes padding and border in element's total width/height */
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif; /* Sets primary font family */
+      line-height: 1.6; /* Sets line height for readability */
+      color: #fff; /* Default text color */
+      background-color: #1a252f; /* Dark background from example */
+    }
+
+
+    /* Header Styles */
+    .hero {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      height: 60vh;
+      background: url('background.jpg') no-repeat center center/cover;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      color: #fff;
+    }
+
+
+    .hero-background {
+      position: absolute; /* Positions background absolutely */
+      top: 0; /* Starts at top */
+      right: 0; /* Aligns to right */
+      width: 50%; /* Takes half the width */
+      height: 100%; /* Full height of hero */
+      z-index: 1; /* Places behind content */
+    }
+
+    .hero-text {
+      position: relative; /* Positions relative to hero */
+      z-index: 2; /* Places above overlay */
+      text-align: left; /* Aligns text to left */
+      max-width: 50%; /* Limits text width */
+    }
+
+    .hero-text h3 {
+      font-size: 24px; /* Sets font size */
+      margin-bottom: 10px; /* Adds space below */
+      text-transform: uppercase; /* Converts to uppercase */
+      letter-spacing: 2px; /* Adds letter spacing */
+      color: #2a9d8f; /* Accent color */
+    }
+
+    .hero-text h1 {
+      font-size: 48px; /* Sets font size */
+      margin-bottom: 15px; /* Adds space below */
+      font-weight: 700; /* Sets font weight */
+    }
+
+    .hero-text p {
+      font-size: 18px; /* Sets font size */
+      margin-bottom: 20px; /* Adds space below */
+      font-weight: 300; /* Sets font weight */
+      color: #ddd; /* Light grey text */
+    }
+
+    .hero-text .btn {
+      display: inline-block; /* Displays as inline block */
+      background-color: #2a9d8f; /* Button background color */
+      color: #fff; /* Button text color */
+      padding: 12px 25px; /* Adds padding */
+      text-decoration: none; /* Removes underline */
+      border-radius: 25px; /* Rounds corners */
+      transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+      box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3); /* Adds shadow */
+    }
+
+    .hero-text .btn:hover {
+      background-color: #1f776d; /* Darker color on hover */
+      transform: translateY(-3px); /* Moves up on hover */
+    }
+
+
+    /* Contact Dropdown */
+    .contact-dropdown {
+      position: relative; /* Positions dropdown content */
+      display: inline-block; /* Displays inline */
+      z-index: 2; /* Stays above other content */
+    }
+
+    .contact-dropdown-content {
+      display: none; /* Hidden by default */
+      position: absolute; /* Positions absolutely */
+      background-color: rgba(255, 255, 255, 0.1); /* Blue background with transparency */
+      min-width: 300px; /* Minimum width */
+      border-radius: 10px; /* Rounds corners */
+      padding: 15px; /* Adds padding */
+      z-index: 2; /* Stays above other content */
+      top: 100%; /* Positions below button */
+      left: 0; /* Aligns to left */
+      backdrop-filter: blur(10px); /* Adds blur effect */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adds shadow */
+    }
+
+    .contact-dropdown-content.show {
+      display: block; /* Shows when toggled */
+    }
+
+    .contact-dropdown-content .contact-row {
+      display: flex; /* Uses flexbox */
+      justify-content: space-between; /* Distributes space */
+      align-items: center; /* Centers items vertically */
+      margin-bottom: 10px; /* Adds space below */
+    }
+
+    .contact-dropdown-content .contact-row p {
+      font-size: 14px; /* Sets font size */
+      margin: 0 15px; /* Adds horizontal margin */
+      color: #ecf0f1; /* Text color */
+    }
+
+    .contact-dropdown-content a {
+      color: #2a9d8f; /* Link color */
+      text-decoration: none; /* Removes underline */
+      transition: color 0.3s; /* Smooth color transition */
+    }
+
+    .contact-dropdown-content a:hover {
+      color: #87cefa; /* Lighter blue on hover */
+      text-decoration: underline; /* Adds underline on hover */
+    }
+
+    /* About Section (Section 1) */
+    .about {
+      position: relative; /* Positions content */
+      display: flex; /* Uses flexbox */
+      justify-content: center; /* Centers horizontally */
+      align-items: center; /* Centers vertically */
+      padding: 30px 40px; /* Adds padding */
+      background: #1a252f; /* Dark background */
+      text-align: center; /* Centers text */
+      margin-bottom: 60px;
+    }
+
+    .about-content h2 {
+      font-family: 'Playfair Display', serif; /* Sets font family */
+      font-size: 46px; /* Sets font size */
+      margin-bottom: 15px; /* Adds space below */
+      font-weight: 600; /* Sets font weight */
+      color: #2a9d8f; /* Text color */
+    }
+
+    .about-content p {
+      font-size: 16px; /* Sets font size */
+      margin-bottom: 20px; /* Adds space below */
+      font-weight: 300; /* Sets font weight */
+      color: #fff; /* Text color */
+      text-align: justify; /* Justifies text */
+    }
+
+    .about-content .btn {
+      background-color: #2a9d8f; /* Button background */
+      color: #fff; /* Button text color */
+      padding: 12px 25px; /* Adds padding */
+      text-decoration: none; /* Removes underline */
+      border-radius: 25px; /* Rounds corners */
+      transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+      box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3); /* Adds shadow */
+    }
+
+    .about-content .btn:hover {
+      background-color: #1f776d; /* Darker color on hover */
+      transform: translateY(-3px); /* Moves up on hover */
+    }.about-description {
+  display: flex;
+  gap: 20px;
+  align-items: center;  /* Vertically centers the image and text */
+  margin: 20px 0;
+}
+
+.about-inline-img {
+  height: 450px;       /* Keep the height as specified */
+  margin-right: 50px;
+  width: auto;         /* Let width adjust naturally */
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;      /* Prevent shrinking */
+}
+    .about-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* clean, modern font */
+  font-weight: 500; /* slightly bold */
+  font-size: 500px; !important; /* adjust as needed */
+  color: #eeeeee; /* light grey text (for dark backgrounds) */
+  line-height: 1.6; /* improve readability */
+  letter-spacing: 0.4px; /* aesthetic spacing */
+}
+.about-description p {
+  flex: 1;
+}
+
+
+
+    /* Services Section (Section 2) */
+    .services {
+      padding: 60px 60px 60px 60px; /* Adds padding */
+      text-align: center; /* Centers text */
+      background: #1a252f; 
+      margin-bottom: 60px;
+
+    }
+
+    .services h2 {
+      font-family: 'Playfair Display', serif; /* Sets font family */
+      font-size: 46px; /* Sets font size */
+      margin-bottom: 15px; /* Adds space below */
+      font-weight: 700; /* Sets font weight */
+      color: #2a9d8f; /* Text color */
+      letter-spacing: 2px; /* Adds letter spacing */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adds shadow */
+    }
+
+    .service-grid {
+      display: grid; /* Uses CSS grid */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+      gap: 15px; /* Adds space between items */
+    }
+
+    .service-box {
+      padding: 20px; /* Adds padding */
+      border-radius: 15px; /* Rounds corners */
+      transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+      background: #2c3e50; /* Slightly lighter dark */
+    }
+
+    .service-box:hover {
+      transform: translateY(-5px); /* Moves up on hover */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Adds shadow on hover */
+    }
+
+    .service-box i {
+      font-size: 36px; /* Sets icon size */
+      color: #2a9d8f; /* Icon color */
+      margin-bottom: 10px; /* Adds space below */
+    }
+
+    .service-box h3 {
+      font-size: 20px; /* Sets font size */
+      margin-bottom: 10px; /* Adds space below */
+      font-weight: 500; /* Sets font weight */
+      color: #fff; /* Text color */
+    }
+
+    .service-box p {
+      font-size: 14px; /* Sets font size */
+      font-weight: 300; /* Sets font weight */
+      color: #ddd; /* Light grey text */
+    }
+
+
+
+
+    /* Projects Section */
+    .projects {
+      padding: 30px 40px; /* Adds padding */
+      text-align: center; /* Centers text */
+      background: #1a252f; /* Different background color */
+      margin-bottom: 60px;
+    }
+
+    .projects h2 {
+      font-family: 'Playfair Display', serif; /* Sets font family */
+      font-size: 46px; /* Sets font size */
+      margin-bottom: 15px; /* Adds space below */
+      font-weight: 600; /* Sets font weight */
+      color: #2a9d8f; /* Text color */
+    }
+
+    .project-grid {
+      display: grid; /* Uses CSS grid */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+      gap: 15px; /* Adds space between items */
+    }
+
+    .project-box {
+      padding: 20px; /* Adds padding */
+      border-radius: 15px; /* Rounds corners */
+      cursor: pointer; /* Changes cursor */
+      transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+      background: #2c3e50; /* Slightly lighter dark */
+    }
+
+    .project-box:hover {
+      transform: translateY(-5px); /* Moves up on hover */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Adds shadow on hover */
+    }
+
+    .project-box img {
+      width: 100%; /* Full width */
+      height: 150px; /* Fixed height */
+      object-fit: cover; /* Maintains aspect ratio */
+      border-radius: 10px; /* Rounds corners */
+      margin-bottom: 10px; /* Adds space below */
+    }
+
+    .project-box h3 {
+      font-size: 20px; /* Sets font size */
+      margin-bottom: 10px; /* Adds space below */
+      font-weight: 500; /* Sets font weight */
+      color: #fff; /* Text color */
+    }
+
+    .project-box p {
+      font-size: 14px; /* Sets font size */
+      font-weight: 300; /* Sets font weight */
+      color: #ddd; /* Light grey text */
+    }
+
+    .project-pdf {
+      margin-top: 10px; /* Adds space above */
+    }
+
+    .project-pdf a {
+      display: inline-block; /* Displays as inline block */
+      background-color: #2a9d8f; /* Button background */
+      color: #fff; /* Button text color */
+      padding: 8px 15px; /* Adds padding */
+      text-decoration: none; /* Removes underline */
+      border-radius: 20px; /* Rounds corners */
+      transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+      box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3); /* Adds shadow */
+    }
+
+    .project-pdf a:hover {
+      background-color: #1f776d; /* Darker color on hover */
+      transform: translateY(-2px); /* Moves up on hover */
+    }
+
+    /* Modal for Project Details */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Fixed position */
+      top: 0; /* Starts at top */
+      left: 0; /* Starts at left */
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent overlay */
+      z-index: 1000; /* High z-index */
+      justify-content: center; /* Centers horizontally */
+      align-items: center; /* Centers vertically */
+    }
+
+    .modal-content {
+      background: #2a2a2a; /* Dark background */
+      padding: 25px; /* Adds padding */
+      border-radius: 15px; /* Rounds corners */
+      max-width: 600px; /* Maximum width */
+      width: 90%; /* Relative width */
+      position: relative; /* Positions content */
+      color: #fff; /* Text color */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Adds shadow */
+    }
+
+    .modal-content img {
+      width: 100%; /* Full width */
+      height: auto; /* Maintains aspect ratio */
+      border-radius: 10px; /* Rounds corners */
+      margin-bottom: 15px; /* Adds space below */
+    }
+
+    .modal-content h3 {
+      font-size: 24px; /* Sets font size */
+      margin-bottom: 10px; /* Adds space below */
+      font-weight: 600; /* Sets font weight */
+    }
+
+    .modal-content p {
+      font-size: 16px; /* Sets font size */
+      margin-bottom: 15px; /* Adds space below */
+      font-weight: 300; /* Sets font weight */
+    }
+
+    .modal-content a {
+      color: #2a9d8f; /* Link color */
+      text-decoration: none; /* Removes underline */
+      transition: color 0.3s; /* Smooth color transition */
+    }
+
+    .modal-content a:hover {
+      color: #1f776d; /* Darker color on hover */
+      text-decoration: underline; /* Adds underline on hover */
+    }
+
+    .close-btn {
+      position: absolute; /* Positions absolutely */
+      top: 15px; /* Distance from top */
+      right: 20px; /* Distance from right */
+      font-size: 24px; /* Sets font size */
+      cursor: pointer; /* Changes cursor */
+      color: #2a9d8f; /* Icon color */
+      transition: color 0.3s; /* Smooth color transition */
+    }
+
+    .close-btn:hover {
+      color: #1f776d; /* Darker color on hover */
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 30px 40px; /* Adds padding */
+      text-align: center; /* Centers text */
+      background: #1a1a1a; /* Dark background */
+    }
+
+    .contact h2 {
+      font-size: 36px; /* Sets font size */
+      margin-bottom: 15px; /* Adds space below */
+      font-weight: 600; /* Sets font weight */
+      color: #fff; /* Text color */
+    }
+
+    .contact p {
+      font-size: 16px; /* Sets font size */
+      margin-bottom: 20px; /* Adds space below */
+      font-weight: 300; /* Sets font weight */
+      color: #fff; /* Text color */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column; /* Stacks items vertically */
+        text-align: center; /* Centers text */
+        height: 60vh; /* Reduces height */
+        padding: 20px; /* Reduces padding */
+      }
+
+      .hero-text {
+        max-width: 100%; /* Full width */
+        margin-bottom: 20px; /* Adds space below */
+      }
+
+      .hero-text h1 {
+        font-size: 36px; /* Reduces font size */
+      }
+
+      .profile-image {
+        top: 10px; /* Adjusts position */
+        right: 10px; /* Adjusts position */
+        width: 120px; /* Reduces size */
+        height: 120px; /* Reduces size */
+      }
+
+      .theme-toggle {
+        top: 150px; /* Adjusts position */
+        right: 10px; /* Adjusts position */
+      }
+
+      .about, .services, .projects, .contact {
+        padding: 20px; /* Reduces padding */
+      }
+
+      .contact-dropdown-content {
+        min-width: 200px; /* Reduces width */
+        left: auto; /* Aligns to right */
+        right: 0; /* Aligns to right */
+      }
+
+      .contact-dropdown-content .contact-row {
+        flex-direction: column; /* Stacks items */
+        align-items: flex-start; /* Aligns to start */
+      }
+
+      .service-grid, .project-grid {
+        grid-template-columns: 1fr; /* Single column */
+      }
+    }
+  </style>
+</head>
+
+  <!-- Header -->
+  <header class="hero">
+  <div class="hero-text">
+    <h3>Hi There!</h3>
+    <h1><span class="typed" id="typing"></span></h1>
+    <p>I analyse complex data and give you simple and insightful conclusions and recommendations.</p>
+    <div class="contact-dropdown">
+      <a href="#" class="btn" id="contact-btn">Contact Me</a>
+      <div class="contact-dropdown-content" id="contact-dropdown">
+        <div class="contact-row">
+          <p><strong>Email:</strong> <a href="mailto:bwelson523@gmail.com">bwelson523@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+233591569012">+233591569012</a></p>
+          <p><strong>Location:</strong> Kumasi, Ghana</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+</header>
+
+
+  <!-- About (Section 1) -->
+  <section class="about" id="about">
+   <div class="about-content">
+  <h2>Who am I?</h2>
+  <div class="about-description">
+    <img src="me.jpg" alt="Profile image" class="about-inline-img" />
+    <p class="about-text">
+      I am Bentum Welson, a Statistics graduate from Kwame Nkrumah University of Science and Technology. My academic path has provided me with a solid grounding in Probability Theory, Time Series Analysis, and Financial Mathematics, enhanced by practical expertise in tools such as R, Python, and IBM SPSS. During my tenure as a Credit Officer Intern at Ahantaman Rural Bank, I diligently analyzed financial data and evaluated loan risks, offering valuable insights that shaped strategic decisions. Leading projects like the implementation of the Cox-Ingersoll-Ross model and a research study on the influence of roommate relationships on academic performance, I have cultivated strong teamwork and analytical skills. Moreover, I am proficient in AI prompt commands and utilize artificial intelligence to optimize work efficiency, streamline tasks, and deliver timely, data-informed solutions, reflecting my passion for innovative problem-solving.
+    </p>
+  </div>
+  <a href="CVDRAFT1.docx" download="Bentum_Welson_CV.docx" class="btn" id="download-cv">Download CV</a>
+</div>
+  </section>
+
+  <!-- Services (Section 2) -->
+  <section class="services" id="services">
+    <h2>My Services</h2>
+    <div class="service-grid">
+      <div class="service-box">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Statistical Modeling</h3>
+        <p>Forecasting and inference using models like CIR, regression, time series.</p>
+      </div>
+      <div class="service-box">
+        <i class="fa-solid fa-database"></i>
+        <h3>Data Analysis</h3>
+        <p>SPSS, R, Python for analyzing patterns and making data-driven decisions.</p>
+      </div>
+      <div class="service-box">
+        <i class="fa-solid fa-code"></i>
+        <h3>Web Dashboards</h3>
+        <p>Interactive dashboards and project portfolios with HTML, CSS, JS.</p>
+      </div>
+      <div class="service-box">
+        <i class="fa-solid fa-magnifying-glass-chart"></i>
+        <h3>Credit Risk Analysis</h3>
+        <p>Internship-level experience analyzing borrower risk and loan performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-box" data-project="project1">
+        <img src="cir.jpg" alt="Simulations">
+        <h3>Stochastic Simulations</h3>
+        <p>Team leader: Forecasted and simulated interest rate using The Cox-Ingersoll-Ross (CIR) model</p>
+        <div class="project-pdf">
+          <a href="cir.pdf" target="_blank" download="Stochastic_Simulations.pdf">Download PDF</a>
+        </div>
+      </div>
+      <div class="project-box" data-project="project2">
+        <img src="project2.jpg" alt="Time Series Analysis">
+        <h3>Time Series Analysis</h3>
+        <p>Forecasted stock prices using ARIMA models in R.</p>
+        <div class="project-pdf">
+          <a href="project2.pdf" target="_blank" download="Time_Series_Analysis.pdf">Download PDF</a>
+        </div>
+      </div>
+      <div class="project-box" data-project="project3">
+        <img src="sig.jpg" alt="Data Analysis">
+        <h3>Research Methods</h3>
+        <p>Led a team to designed a research study interested in the effect of roommate(s) relationships on academic wellbeing of students.</p>
+        <div class="project-pdf">
+          <a href="tav.pdf" target="_blank" download="Data_Analysis.pdf">Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Project Details -->
+  <div class="modal" id="project-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">×</span>
+      <img id="modal-image" src="" alt="Project Image">
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+      <p><strong>Link:</strong> <a id="modal-link" href="#" target="_blank">View Project</a></p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <p>If you'd like to collaborate, work together, or just say hi — reach out:</p>
+    <div>linkedIn: <a href="" target="_blank" style="text-decoration: none;"><font color="blue">Welson Bentum</font></a></div>
+    <div>Github: </div>
+    <div>Instagram:</div>
+    <div>Twitter(X): <font color="blue">@_sbdf</font></div>
+    <div>Telegram: </div>
+  
+  </section>
+
+  <script>
+    // Typing Animation
+    const typingElement = document.getElementById('typing'); // Gets typing element
+    const words = ['I am a researcher', 'I am a statistician', 'I am a data analyst', 'I am a data scientist']; // Array of words to type
+    let wordIndex = 0; // Tracks current word index
+    let charIndex = 0; // Tracks current character index
+    let isDeleting = false; // Tracks deletion state
+
+    function type() {
+      const currentWord = words[wordIndex]; // Gets current word
+      if (isDeleting) {
+        typingElement.textContent = currentWord.substring(0, charIndex--); // Removes one character
+        if (charIndex < 0) {
+          isDeleting = false; // Stops deleting
+          wordIndex = (wordIndex + 1) % words.length; // Moves to next word
+        }
+      } else {
+        typingElement.textContent = currentWord.substring(0, charIndex++); // Adds one character
+        if (charIndex > currentWord.length) {
+          isDeleting = true; // Starts deleting
+          charIndex = currentWord.length; // Resets character index
+          setTimeout(type, 1500); // Pauses before deleting
+          return;
+        }
+      }
+      setTimeout(type, isDeleting ? 50 : 100); // Sets typing/deleting speed
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { // Runs when page loads
+      type(); // Starts typing animation
+    });
+
+    // Contact Dropdown
+    const contactBtn = document.getElementById('contact-btn'); // Gets contact button
+    const contactDropdown = document.getElementById('contact-dropdown'); // Gets dropdown
+
+    contactBtn.addEventListener('click', (e) => { // Adds click event
+      e.preventDefault(); // Prevents default action
+      contactDropdown.classList.toggle('show'); // Toggles dropdown visibility
+    });
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', (e) => { // Adds click event to window
+      if (!e.target.matches('.btn') && !e.target.closest('.contact-dropdown')) { // Checks if click is outside
+        contactDropdown.classList.remove('show'); // Hides dropdown
+      }
+    });
+
+
+    // Project Modal
+    const projectBoxes = document.querySelectorAll('.project-box'); // Gets all project boxes
+    const modal = document.getElementById('project-modal'); // Gets modal
+    const closeModal = document.getElementById('close-modal'); // Gets close button
+    const modalImage = document.getElementById('modal-image'); // Gets modal image
+    const modalTitle = document.getElementById('modal-title'); // Gets modal title
+    const modalDescription = document.getElementById('modal-description'); // Gets modal description
+    const modalLink = document.getElementById('modal-link'); // Gets modal link
+
+    const projects = {
+      project1: {
+        title: 'Credit Risk Dashboard',
+        description: 'Built an interactive dashboard to visualize loan performance using Python and Dash. It helps banks monitor borrower risk in real-time.',
+        image: 'project1.jpg',
+        link: 'https://example.com/credit-risk-dashboard'
+      },
+      project2: {
+        title: 'Time Series Analysis',
+        description: 'Forecasted stock prices using ARIMA models in R. The project included data cleaning, model selection, and validation.',
+        image: 'project2.jpg',
+        link: 'https://example.com/time-series-analysis'
+      },
+      project3: {
+        title: 'Web Portfolio',
+        description: 'Designed a personal portfolio using HTML, CSS, and JavaScript to showcase my projects and skills.',
+        image: 'project3.jpg',
+        link: 'https://example.com/web-portfolio'
+      }
+    };
+
+    projectBoxes.forEach(box => { // Loops through each project box
+      box.addEventListener('click', () => { // Adds click event
+        const projectId = box.getAttribute('data-project'); // Gets project ID
+        const project = projects[projectId]; // Gets project data
+        modalImage.src = project.image; // Sets modal image
+        modalTitle.textContent = project.title; // Sets modal title
+        modalDescription.textContent = project.description; // Sets modal description
+        modalLink.href = project.link; // Sets modal link
+        modal.style.display = 'flex'; // Shows modal
+      });
+    });
+
+    closeModal.addEventListener('click', () => { // Adds click event to close button
+      modal.style.display = 'none'; // Hides modal
+    });
+
+    window.addEventListener('click', (e) => { // Adds click event to window
+      if (e.target === modal) { // Checks if click is on modal background
+        modal.style.display = 'none'; // Hides modal
+      }
+    });
+
+    // CV Download Functionality
+    const downloadCv = document.getElementById('download-cv'); // Gets download CV button
+    downloadCv.addEventListener('click', (e) => { // Adds click event
+      e.preventDefault(); // Prevents default action
+      const cvPath = 'CVDRAFT1.docx'; // Defines CV file path
+      const link = document.createElement('a'); // Creates download link
+      link.href = cvPath; // Sets link href
+      link.download = 'Bentum_Welson_CV.docx'; // Sets download filename
+      document.body.appendChild(link); // Adds link to body
+      link.click(); // Triggers download
+      document.body.removeChild(link); // Removes link from body
+
+      fetch(cvPath) // Fetches CV file
+        .then(response => { // Handles response
+          if (!response.ok) { // Checks for errors
+            alert('CV file not found. Please ensure the file "CVDRAFT1.docx" is in the same directory as this HTML file or update the path accordingly.');
+          }
+        })
+        .catch(error => { // Handles fetch errors
+          alert('Error accessing the CV file. Verify the file path ("CVDRAFT1.docx") and ensure your browser allows downloads from this location.');
+        });
+    });
+  </script>
