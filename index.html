@@ -141,6 +141,7 @@
       text-decoration: underline; /* Adds underline on hover */
     }
 
+
     /* About Section (Section 1) */
     .about {
       position: relative; /* Positions content */
@@ -182,30 +183,31 @@
     .about-content .btn:hover {
       background-color: #1f776d; /* Darker color on hover */
       transform: translateY(-3px); /* Moves up on hover */
-    }.about-description {
+    }
+    .about-description {
   display: flex;
+  align-items: flex-start;
   gap: 20px;
-  align-items: center;  /* Vertically centers the image and text */
-  margin: 20px 0;
+  flex-wrap: wrap; /* allows text to go around image in mobile */
 }
 
 .about-inline-img {
-  height: 450px;       /* Keep the height as specified */
-  margin-right: 50px;
-  width: auto;         /* Let width adjust naturally */
+  height: 200px; /* reduced for mobile friendliness */
+  width: auto;
   object-fit: cover;
   border-radius: 10px;
-  flex-shrink: 0;      /* Prevent shrinking */
+  flex-shrink: 0;
+  float: left; /* allows text to wrap around */
+  margin: 0 15px 15px 0;
 }
-    .about-text {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* clean, modern font */
-  font-weight: 500; /* slightly bold */
-  font-size: 500px; !important; /* adjust as needed */
-  color: #eeeeee; /* light grey text (for dark backgrounds) */
-  line-height: 1.6; /* improve readability */
-  letter-spacing: 0.4px; /* aesthetic spacing */
-}
-.about-description p {
+
+.about-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #eeeeee;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
   flex: 1;
 }
 
@@ -436,6 +438,7 @@
       color: #fff; /* Text color */
     }
 
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .hero {
@@ -485,6 +488,17 @@
         grid-template-columns: 1fr; /* Single column */
       }
     }
+/* Optional: tweak for very small screens */
+@media (max-width: 600px) {
+  .about-inline-img {
+    height: 150px;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+}
+
   </style>
 </head>
 
