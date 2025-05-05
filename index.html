@@ -186,19 +186,19 @@
     }
     .about-description {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   gap: 20px;
-  flex-wrap: wrap; /* allows text to go around image in mobile */
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .about-inline-img {
-  height: 200px; /* reduced for mobile friendliness */
+  height: 350px;
   width: auto;
   object-fit: cover;
   border-radius: 10px;
   flex-shrink: 0;
-  float: left; /* allows text to wrap around */
-  margin: 0 15px 15px 0;
 }
 
 .about-text {
@@ -210,6 +210,8 @@
   letter-spacing: 0.4px;
   flex: 1;
 }
+
+
 
 
 
@@ -488,16 +490,27 @@
         grid-template-columns: 1fr; /* Single column */
       }
     }
-/* Optional: tweak for very small screens */
-@media (max-width: 600px) {
+
+/* Responsive stacking for small screens */
+@media (max-width: 768px) {
+  .about-description {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+
   .about-inline-img {
-    height: 150px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
   }
 
   .about-text {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    width: 100%;
   }
 }
+
 
   </style>
 </head>
@@ -530,7 +543,7 @@
   <div class="about-description">
     <img src="me.jpg" alt="Profile image" class="about-inline-img" />
     <p class="about-text">
-      I am Bentum Welson, a Statistics graduate from Kwame Nkrumah University of Science and Technology. My academic path has provided me with a solid grounding in Probability Theory, Time Series Analysis, and Financial Mathematics, enhanced by practical expertise in tools such as R, Python, and IBM SPSS. During my tenure as a Credit Officer Intern at Ahantaman Rural Bank, I diligently analyzed financial data and evaluated loan risks, offering valuable insights that shaped strategic decisions. Leading projects like the implementation of the Cox-Ingersoll-Ross model and a research study on the influence of roommate relationships on academic performance, I have cultivated strong teamwork and analytical skills. Moreover, I am proficient in AI prompt commands and utilize artificial intelligence to optimize work efficiency, streamline tasks, and deliver timely, data-informed solutions, reflecting my passion for innovative problem-solving.
+      I am Bentum Welson, a Statistics graduate from Kwame Nkrumah University of Science and Technology. My academic path has provided me with a solid grounding in <span style="font-family:cursive; color:skyblue; font-size:22px">Probability Theory, Time Series Analysis</span>, and <span style="font-family:cursive; color:skyblue; font-size:22px">Financial Mathematics</span>, enhanced by practical expertise in tools such as <span style="font-family:cursive; color:skyblue; font-size:22px">R, Python, HTML, CSS, Javascript and IBM SPSS</span>. During my tenure as a <span style="font-family:cursive; color:skyblue; font-size:22px">Credit Analyst Intern</span> at Ahantaman Rural Bank, I <span style="font-family:cursive; color:skyblue; font-size:22px">diligently analyzed financial data and evaluated loan risks, offering valuable insights that shaped strategic decisions</span>. Leading projects like the <span style="font-family:cursive; color:skyblue; font-size:22px">implementation of the Cox-Ingersoll-Ross model</span> and a research study on the influence of roommate relationships on academic performance, I have cultivated strong teamwork and analytical skills. Moreover, I am proficient in <span style="font-family:cursive; color:skyblue; font-size:22px">AI prompt commands and utilize artificial intelligence to optimize work efficiency, streamline tasks, and deliver timely, data-informed solutions, reflecting my passion for innovative problem-solving</span>.
     </p>
   </div>
   <a href="CVDRAFT1.docx" download="Bentum_Welson_CV.docx" class="btn" id="download-cv">Download CV</a>
